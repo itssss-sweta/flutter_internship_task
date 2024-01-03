@@ -21,6 +21,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
     setState(() {
       isSearchBarVisible = !isSearchBarVisible;
       if (!isSearchBarVisible) {
+        // Clear search text when hiding the search bar
         _searchController.clear();
       }
     });
@@ -32,11 +33,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
         child: Container(
       width: double.infinity,
       margin: xsmalltopside,
-      // padding: allten,
       color: white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          // Display the search bar if it's visible
           isSearchBarVisible
               ? Expanded(
                   child: AnimatedContainer(
@@ -51,6 +52,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
                           onPressed: () {
+                            // Call the search function when search button is pressed
                             matchString(
                               context,
                               text: _searchController.text,

@@ -19,13 +19,17 @@ class HomeCubitCubit extends Cubit<HomeCubitState> {
     try {
       final Response response =
           await ApiServiceProduct.getProduct(url: productUrl);
+
+      //Logging API response boudy and status code for debugging
       log(response.body);
       log(response.statusCode.toString());
       if (response.statusCode >= 200 && response.statusCode <= 300) {
         homePageModel = homePageModelFromJson(response.body);
         log(homePageModel.toString());
+        //emits a state indicating that the data has been successfully loaded
         emit(DataLoadedState(homePageModel!));
       } else {
+        // Emits an error state if the API request is not successful
         emit(ErrorState(
             message:
                 'Failed to load data. Status code:${response.statusCode}'));
@@ -42,6 +46,7 @@ class HomeCubitCubit extends Cubit<HomeCubitState> {
       log(response.body);
       log(response.statusCode.toString());
       if (response.statusCode >= 200 && response.statusCode <= 300) {
+        //Converts json response into a list of strings
         List<String> responseList =
             List<String>.from(jsonDecode(response.body));
         categories = responseList;

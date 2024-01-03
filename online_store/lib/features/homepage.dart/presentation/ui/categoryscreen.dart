@@ -28,6 +28,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.sizeOf(context).width, 50),
         child: CustomAppBar(
+          // Pass the products from the HomeCubitCubit to the CustomAppBar
           products: products.homePageModel,
         ),
       ),

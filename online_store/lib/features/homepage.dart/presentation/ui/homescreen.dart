@@ -23,19 +23,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+    // Trigger the call to getCategories() when the screen is initialized
     context.read<HomeCubitCubit>().getCategories();
   }
 
   @override
   Widget build(BuildContext context) {
+    // Access the HomeCubitCubit instance
     final homePageModel = context.read<HomeCubitCubit>();
 
     return FutureBuilder(
+        // Use FutureBuilder to handle the asynchronous loading of products
         future: homePageModel.getProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-              child: CircularProgressIndicator(),
+              child: ShimmerLoadingWidget(),
             );
           } else if (snapshot.hasError) {
             // Display an error message if the future encounters an error
@@ -60,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(state.message ?? ''),
                     );
                   }
+                  // Build the main content of the screen using the retrieved data
                   return SingleChildScrollView(
                     physics: const BouncingScrollPhysics(),
                     child: Column(

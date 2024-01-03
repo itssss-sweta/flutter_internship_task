@@ -45,32 +45,33 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Text(state.message ?? ''),
           );
         }
-        if (state is SearchEmptyState) {
+
+        if (state is SearchFoundState) {
+          return SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: [
+                Padding(
+                  padding: smallsymmetric,
+                  child: Align(
+                      alignment: Alignment.topLeft,
+                      child: Text('Searched Result: ${widget.searchString}  ',
+                          style: regularStyle15)),
+                ),
+                GridViewContainer(latestproduct: state.searchPageModel),
+              ],
+            ),
+          );
+        } else {
           return Center(
+            // Display a message when no search results are found
             child: Text(
-              'No such data found!',
+              'No products found!',
               style: semiboldStyle20,
               textAlign: TextAlign.center,
             ),
           );
         }
-        return SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              Padding(
-                padding: smallsymmetric,
-                child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text('Searched Result: ${widget.searchString}  ',
-                        style: regularStyle15)),
-              ),
-              GridViewContainer(
-                  latestproduct:
-                      state is SearchFoundState ? state.searchPageModel : []),
-            ],
-          ),
-        );
       }),
       bottomNavigationBar: const NavBarBottom(),
     );

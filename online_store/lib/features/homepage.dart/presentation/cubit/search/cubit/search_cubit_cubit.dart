@@ -40,9 +40,13 @@ class SearchCubitCubit extends Cubit<SearchCubitState> {
 
   void searchProducts(
       String? searchString, List<ProductListEntity?>? products) {
-    if (searchString == null || searchString.isEmpty || products == null) {
+    if (searchString == null ||
+        searchString.isEmpty ||
+        products == null ||
+        products.isEmpty) {
       emit(SearchEmptyState());
     } else {
+      // Filters products based on the search string
       List<HomePageModel> matchingProducts = products
           .where((product) =>
               product?.title
@@ -52,7 +56,7 @@ class SearchCubitCubit extends Cubit<SearchCubitState> {
           .map((product) => product as HomePageModel)
           .toList();
       log(matchingProducts.toString());
-
+      // Emits a state indicating that matching products have been found
       emit(SearchFoundState(matchingProducts));
     }
   }
