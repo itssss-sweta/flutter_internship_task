@@ -14,6 +14,8 @@ final class SearchFoundState extends SearchCubitState {
 
 final class CategoryBrowseState extends SearchCubitState {}
 
+final class SearchEmptyState extends SearchCubitState {}
+
 final class SearchErrorState extends SearchCubitState {
   final String? message;
 

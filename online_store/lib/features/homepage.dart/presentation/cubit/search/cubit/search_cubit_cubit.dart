@@ -6,6 +6,7 @@ import 'package:online_store/core/constants/key.dart';
 import 'package:online_store/features/homepage.dart/data/data_source/remote/urls.dart';
 import 'package:online_store/features/homepage.dart/data/models/product_model.dart';
 import 'package:online_store/features/homepage.dart/data/repository/api_service.dart';
+import 'package:online_store/features/homepage.dart/domain/entity/product_entity.dart';
 
 part 'search_cubit_state.dart';
 
@@ -34,6 +35,25 @@ class SearchCubitCubit extends Cubit<SearchCubitState> {
       }
     } catch (e) {
       emit(SearchErrorState(message: 'Error: $e'));
+    }
+  }
+
+  void searchProducts(
+      String? searchString, List<ProductListEntity?>? products) {
+    if (searchString == null || searchString.isEmpty || products == null) {
+      emit(SearchEmptyState());
+    } else {
+      List<HomePageModel> matchingProducts = products
+          .where((product) =>
+              product?.title
+                  ?.toLowerCase()
+                  .contains(searchString.toLowerCase()) ??
+              false)
+          .map((product) => product as HomePageModel)
+          .toList();
+      log(matchingProducts.toString());
+
+      emit(SearchFoundState(matchingProducts));
     }
   }
 }

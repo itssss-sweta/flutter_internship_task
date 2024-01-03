@@ -1,28 +1,27 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:online_store/core/constants/colors.dart';
 import 'package:online_store/core/constants/padding.dart';
 import 'package:online_store/core/constants/textstyle.dart';
+import 'package:online_store/core/utils/searchfuntion.dart';
+import 'package:online_store/features/homepage.dart/data/models/product_model.dart';
 
 class CustomAppBar extends StatefulWidget {
-  const CustomAppBar({super.key});
+  final List<HomePageModel>? products;
+  const CustomAppBar({super.key, this.products});
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
-  late final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   bool isSearchBarVisible = false;
-  bool isSearch = false;
 
   void _toggleSearchBar() {
     setState(() {
       isSearchBarVisible = !isSearchBarVisible;
       if (!isSearchBarVisible) {
         _searchController.clear();
-        isSearch = false;
       }
     });
   }
@@ -49,24 +48,17 @@ class _CustomAppBarState extends State<CustomAppBar> {
                       controller: _searchController,
                       style: mediumStyle15,
                       textAlign: TextAlign.justify,
-                      onSubmitted: (value) {
-                        setState(() {
-                          isSearch = true;
-                          log(isSearch.toString());
-                        });
-                      },
                       decoration: InputDecoration(
                         suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                if (_searchController.text.isNotEmpty) {
-                                  isSearch = true;
-                                  log(isSearch.toString());
-                                }
-                                log(isSearch.toString());
-                              });
-                            },
-                            icon: const Icon(Icons.search)),
+                          onPressed: () {
+                            matchString(
+                              context,
+                              text: _searchController.text,
+                              products: widget.products,
+                            );
+                          },
+                          icon: const Icon(Icons.search),
+                        ),
                         suffixIconColor: grey,
                         filled: true,
                         hintText: 'Search...',

@@ -7,11 +7,9 @@ import 'package:online_store/features/homepage.dart/domain/entity/product_entity
 
 class GridViewContainer extends StatelessWidget {
   final List<ProductListEntity?>? latestproduct;
-  // final List<SearchResultEntityDataDocs?>? searchresult;
   const GridViewContainer({
     super.key,
     this.latestproduct,
-    // this.searchresult
   });
 
   @override

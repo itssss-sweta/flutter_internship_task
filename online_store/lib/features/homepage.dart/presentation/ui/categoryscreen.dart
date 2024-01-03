@@ -6,6 +6,7 @@ import 'package:online_store/core/components/shimmereffect.dart';
 import 'package:online_store/core/constants/colors.dart';
 import 'package:online_store/core/constants/padding.dart';
 import 'package:online_store/core/constants/textstyle.dart';
+import 'package:online_store/features/homepage.dart/presentation/cubit/home/home_cubit_cubit.dart';
 import 'package:online_store/features/homepage.dart/presentation/cubit/search/cubit/search_cubit_cubit.dart';
 import 'package:online_store/features/homepage.dart/presentation/ui/components/productlist.dart';
 
@@ -20,11 +21,15 @@ class CategoryScreen extends StatefulWidget {
 class _CategoryScreenState extends State<CategoryScreen> {
   @override
   Widget build(BuildContext context) {
+    context.read<HomeCubitCubit>().getProducts();
+    final products = context.read<HomeCubitCubit>();
     return Scaffold(
       backgroundColor: white,
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.sizeOf(context).width, 50),
-        child: const CustomAppBar(),
+        child: CustomAppBar(
+          products: products.homePageModel,
+        ),
       ),
       body: BlocBuilder<SearchCubitCubit, SearchCubitState>(
         builder: (context, state) {

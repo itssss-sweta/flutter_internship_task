@@ -16,8 +16,6 @@ class HomeCubitCubit extends Cubit<HomeCubitState> {
   Future getProducts() async {
     emit(LoadingState());
 
-    // int limit = 10;
-
     try {
       final Response response =
           await ApiServiceProduct.getProduct(url: productUrl);

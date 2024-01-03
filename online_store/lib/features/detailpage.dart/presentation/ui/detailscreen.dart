@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:online_store/core/components/appbar.dart';
 import 'package:online_store/core/components/bottomnavbar.dart';
 import 'package:online_store/core/components/shimmereffect.dart';
 import 'package:online_store/core/constants/colors.dart';
@@ -23,9 +22,24 @@ class _DetailPageState extends State<DetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.sizeOf(context).width, 50),
-        child: const CustomAppBar(),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: white,
+        elevation: 0.1,
+        title: Text(
+          'Online Store',
+          style: bold20,
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.shopping_bag_outlined,
+              color: grey,
+            ),
+            focusColor: white,
+            onPressed: () {},
+          ),
+        ],
       ),
       body: BlocBuilder<DetailCubitCubit, DetailCubitState>(
         builder: (context, state) {

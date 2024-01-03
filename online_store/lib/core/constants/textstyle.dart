@@ -27,30 +27,6 @@ TextStyle semiboldStyle20 = TextStyle(
   fontSize: 20,
 );
 
-TextStyle semiboldStyle8 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w600,
-  fontSize: 8,
-);
-TextStyle semiboldStyle16 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w600,
-  fontSize: 16,
-);
-TextStyle semiboldStyle16black = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w600,
-  fontSize: 16,
-);
-TextStyle boldStyle = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.bold,
-  fontSize: 8,
-);
 TextStyle boldStyle10 = TextStyle(
   color: black,
   fontFamily: 'Poppins',
@@ -63,49 +39,14 @@ TextStyle boldStyle12 = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 12,
 );
-TextStyle boldStyle18 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.bold,
-  fontSize: 18,
-);
-TextStyle boldStyle16 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.bold,
-  fontSize: 16,
-);
+
 TextStyle regularStyle15 = TextStyle(
   color: grey,
   fontFamily: 'Poppins',
   fontWeight: FontWeight.normal,
   fontSize: 15,
 );
-TextStyle mediumStyle9 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w500,
-  fontSize: 9,
-);
-TextStyle mediumStyle10 = TextStyle(
-  color: grey,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w500,
-  fontSize: 10,
-);
 
-TextStyle mediumStyle12 = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w500,
-  fontSize: 12,
-);
-TextStyle mediumStyle12black = TextStyle(
-  color: black,
-  fontFamily: 'Poppins',
-  fontWeight: FontWeight.w500,
-  fontSize: 12,
-);
 TextStyle mediumStyle15 = TextStyle(
   color: black,
   fontFamily: 'Poppins',
